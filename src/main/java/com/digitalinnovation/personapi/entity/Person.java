@@ -30,7 +30,7 @@ public class Person {
     private String cpf;
 
 
-    @Column(nullable = false)
+
     private LocalDate birthdate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
