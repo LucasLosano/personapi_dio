@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/people")
 public class PersonController {
@@ -15,6 +16,11 @@ public class PersonController {
     @Autowired
     public PersonController(PersonService personService){
         this.personService = personService;
+    }
+
+    @GetMapping
+    public String getResponse(){
+        return "Hello World";
     }
 
     @PostMapping
