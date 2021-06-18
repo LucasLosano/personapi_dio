@@ -36,10 +36,14 @@ public class PersonController {
         return personService.listAll();
     }
 
-    @GetMapping
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public PersonDTO getId(@PathVariable("id") Long id) throws PersonNotFoundException {
         return personService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public PersonDTO deleteById(@PathVariable("id") Long id) throws PersonNotFoundException{
+        return personService.deleteById(id);
     }
 
 }
