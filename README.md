@@ -47,3 +47,4 @@ Abaixo, seguem links bem bacanas, sobre tópicos mencionados durante a aula:
 * [Documentação oficial do Lombok](https://projectlombok.org/)
 * [Documentação oficial do Map Struct](https://mapstruct.org/)
 * [Referência para o padrão arquitetural REST](https://restfulapi.net/)
+
