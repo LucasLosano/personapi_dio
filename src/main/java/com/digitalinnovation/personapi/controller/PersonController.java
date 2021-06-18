@@ -3,12 +3,16 @@ package com.digitalinnovation.personapi.controller;
 import com.digitalinnovation.personapi.dto.request.PersonDTO;
 import com.digitalinnovation.personapi.dto.response.MessageResponseDTO;
 import com.digitalinnovation.personapi.entity.Person;
+import com.digitalinnovation.personapi.exception.PersonNotFoundException;
 import com.digitalinnovation.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -21,15 +25,21 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping
-    public String getResponse(){
-        return "Hello World";
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO){
         return personService.createPerson(personDTO);
+    }
+
+    @GetMapping
+    public List<PersonDTO> listAll(){
+        return personService.listAll();
+    }
+
+    @GetMapping
+    @RequestMapping("/{id}")
+    public PersonDTO getId(@PathVariable("id") Long id) throws PersonNotFoundException {
+        return personService.findById(id);
     }
 
 }
